@@ -16,6 +16,8 @@
 
 package com.example.android.architecture.blueprints.Fruitapp.data.source.local
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import kotlinx.coroutines.flow.Flow
 
 class FakefruitDao(initialfruits: List<LocalFruit>? = emptyList()) : fruitDao {
@@ -35,6 +37,7 @@ class FakefruitDao(initialfruits: List<LocalFruit>? = emptyList()) : fruitDao {
     override suspend fun getAll() = fruits ?: throw Exception("fruit list is null")
 
     override suspend fun getById(fruitId: String): LocalFruit? = _fruits?.get(fruitId)
+
 
     override suspend fun upsertAll(fruits: List<LocalFruit>) {
         _fruits?.putAll(fruits.associateBy { it.id })
@@ -60,6 +63,7 @@ class FakefruitDao(initialfruits: List<LocalFruit>? = emptyList()) : fruitDao {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override suspend fun deleteCompleted(): Int {
         _fruits?.apply {
             val originalSize = size
@@ -67,6 +71,32 @@ class FakefruitDao(initialfruits: List<LocalFruit>? = emptyList()) : fruitDao {
             return originalSize - size
         }
         return 0
+    }
+
+    override fun observeAllVeg(): Flow<List<LocalFruit>> {
+        TODO("Not implemented")
+    }
+
+    override fun observeAllA(): Flow<List<LocalFruit>> {
+        TODO("Not implemented")
+    }
+
+
+    override fun observeAllB(): Flow<List<LocalFruit>> {
+        TODO("Not implemented")
+    }
+
+
+
+    override fun observeAllC(): Flow<List<LocalFruit>> {
+        TODO("Not implemented")
+    }
+
+
+
+
+    override fun getAllVeget(fruitCat: String): Flow<LocalFruit> {
+        TODO("Not implemented")
     }
 
     override fun observeAll(): Flow<List<LocalFruit>> {

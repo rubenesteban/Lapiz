@@ -65,6 +65,10 @@ fun AppModalDrawer(
             AppDrawer(
                 currentRoute = currentRoute,
                 navigateTofruits = { navigationActions.navigateTofruits() },
+                navigateTovegetales = { navigationActions.navigateTovegetales() },
+                navigateToA = { navigationActions.navigateToA() },
+                navigateToB = { navigationActions.navigateToB() },
+                navigateToC = { navigationActions.navigateToC() },
                 navigateToStatistics = { navigationActions.navigateToStatistics() },
                 closeDrawer = { coroutineScope.launch { drawerState.close() } }
             )
@@ -78,6 +82,10 @@ fun AppModalDrawer(
 private fun AppDrawer(
     currentRoute: String,
     navigateTofruits: () -> Unit,
+    navigateTovegetales: () -> Unit,
+    navigateToA: () -> Unit,
+    navigateToB: () -> Unit,
+    navigateToC: () -> Unit,
     navigateToStatistics: () -> Unit,
     closeDrawer: () -> Unit,
     modifier: Modifier = Modifier
@@ -96,10 +104,42 @@ private fun AppDrawer(
 
         DrawerButton(
             painter = painterResource(id = R.drawable.ic_list),
-            label = stringResource(id = R.string.list_verduras),
-            isSelected = currentRoute == TodoDestinations.fruitS_ROUTE,
+            label = stringResource(id = R.string.list_legunbres),
+            isSelected = currentRoute == TodoDestinations.legueS_ROUTE,
             action = {
-                navigateTofruits()
+                navigateToA()
+                closeDrawer()
+            }
+        )
+
+        DrawerButton(
+            painter = painterResource(id = R.drawable.ic_list),
+            label = stringResource(id = R.string.list_granos),
+            isSelected = currentRoute == TodoDestinations.tigreS_ROUTE,
+            action = {
+                navigateToB()
+                closeDrawer()
+            }
+        )
+
+
+        DrawerButton(
+            painter = painterResource(id = R.drawable.ic_list),
+            label = stringResource(id = R.string.list_groceries),
+            isSelected = currentRoute == TodoDestinations.chitasS_ROUTE,
+            action = {
+                navigateToC()
+                closeDrawer()
+            }
+        )
+
+
+        DrawerButton(
+            painter = painterResource(id = R.drawable.ic_list),
+            label = stringResource(id = R.string.list_verduras),
+            isSelected = currentRoute == TodoDestinations.vegetteS_ROUTE,
+            action = {
+                navigateTovegetales()
                 closeDrawer()
             }
         )
@@ -183,6 +223,7 @@ private fun DrawerButton(
     }
 }
 
+/*
 @Preview("Drawer contents")
 @Composable
 fun PreviewAppDrawer() {
@@ -197,3 +238,4 @@ fun PreviewAppDrawer() {
         }
     }
 }
+*/

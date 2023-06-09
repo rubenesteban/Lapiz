@@ -38,7 +38,7 @@ import com.example.android.architecture.blueprints.Fruitapp.TodoDestinationsArgs
 import com.example.android.architecture.blueprints.Fruitapp.addeditfruit.AddEditfruitScreen
 import com.example.android.architecture.blueprints.Fruitapp.statistics.StatisticsScreen
 import com.example.android.architecture.blueprints.Fruitapp.fruitdetail.fruitDetailScreen
-import com.example.android.architecture.blueprints.Fruitapp.fruits.fruitsScreen
+import com.example.android.architecture.blueprints.Fruitapp.fruits.*
 import com.example.android.architecture.blueprints.Fruitapp.util.AppModalDrawer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -72,6 +72,75 @@ fun TodoNavGraph(
                 fruitsScreen(
                     userMessage = entry.arguments?.getInt(USER_MESSAGE_ARG)!!,
                     onUserMessageDisplayed = { entry.arguments?.putInt(USER_MESSAGE_ARG, 0) },
+                    onAddfruit = { navActions.navigateToAddEditfruit(R.string.add_fruit, null) },
+                    onfruitClick = { fruit -> navActions.navigateTofruitDetail(fruit.id) },
+                    openDrawer = { coroutineScope.launch { drawerState.open() } }
+                )
+            }
+        }
+        composable(
+            TodoDestinations.legueS_ROUTE,
+            arguments = listOf(
+                navArgument(USER_MESSAGE_ARG) { type = NavType.IntType; defaultValue = 2 }
+            )
+        ) { entry ->
+            AppModalDrawer(drawerState, currentRoute, navActions) {
+                aScreen(
+                    userMessage = entry.arguments?.getInt(USER_MESSAGE_ARG)!!,
+                    onUserMessageDisplayed = { entry.arguments?.putInt(USER_MESSAGE_ARG, 2) },
+                    onAddfruit = { navActions.navigateToAddEditfruit(R.string.add_fruit, null) },
+                    onfruitClick = { fruit -> navActions.navigateTofruitDetail(fruit.id) },
+                    openDrawer = { coroutineScope.launch { drawerState.open() } }
+                )
+            }
+        }
+
+        composable(
+            TodoDestinations.tigreS_ROUTE,
+            arguments = listOf(
+                navArgument(USER_MESSAGE_ARG) { type = NavType.IntType; defaultValue = 3 }
+            )
+        ) { entry ->
+            AppModalDrawer(drawerState, currentRoute, navActions) {
+                bScreen(
+                    userMessage = entry.arguments?.getInt(USER_MESSAGE_ARG)!!,
+                    onUserMessageDisplayed = { entry.arguments?.putInt(USER_MESSAGE_ARG, 3) },
+                    onAddfruit = { navActions.navigateToAddEditfruit(R.string.add_fruit, null) },
+                    onfruitClick = { fruit -> navActions.navigateTofruitDetail(fruit.id) },
+                    openDrawer = { coroutineScope.launch { drawerState.open() } }
+                )
+            }
+        }
+
+
+        composable(
+            TodoDestinations.chitasS_ROUTE,
+            arguments = listOf(
+                navArgument(USER_MESSAGE_ARG) { type = NavType.IntType; defaultValue = 4 }
+            )
+        ) { entry ->
+            AppModalDrawer(drawerState, currentRoute, navActions) {
+                cScreen(
+                    userMessage = entry.arguments?.getInt(USER_MESSAGE_ARG)!!,
+                    onUserMessageDisplayed = { entry.arguments?.putInt(USER_MESSAGE_ARG, 4) },
+                    onAddfruit = { navActions.navigateToAddEditfruit(R.string.add_fruit, null) },
+                    onfruitClick = { fruit -> navActions.navigateTofruitDetail(fruit.id) },
+                    openDrawer = { coroutineScope.launch { drawerState.open() } }
+                )
+            }
+        }
+
+
+        composable(
+            TodoDestinations.vegetteS_ROUTE,
+            arguments = listOf(
+                navArgument(USER_MESSAGE_ARG) { type = NavType.IntType; defaultValue = 1 }
+            )
+        ) { entry ->
+            AppModalDrawer(drawerState, currentRoute, navActions) {
+                vegetScreen(
+                    userMessage = entry.arguments?.getInt(USER_MESSAGE_ARG)!!,
+                    onUserMessageDisplayed = { entry.arguments?.putInt(USER_MESSAGE_ARG, 1) },
                     onAddfruit = { navActions.navigateToAddEditfruit(R.string.add_fruit, null) },
                     onfruitClick = { fruit -> navActions.navigateTofruitDetail(fruit.id) },
                     openDrawer = { coroutineScope.launch { drawerState.open() } }

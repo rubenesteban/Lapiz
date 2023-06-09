@@ -25,11 +25,22 @@ interface fruitRepository {
 
     fun getfruitsStream(): Flow<List<fruit>>
 
+    fun getfruitsVegetales(): Flow<List<fruit>>
+
+    fun getfruitsA(): Flow<List<fruit>>
+
+    fun getfruitsB(): Flow<List<fruit>>
+
+    fun getfruitsC(): Flow<List<fruit>>
+
     suspend fun getfruits(forceUpdate: Boolean = false): List<fruit>
 
     suspend fun refresh()
 
     fun getfruitStream(fruitId: String): Flow<fruit?>
+
+
+    fun getfruitsVeget(fruitCat: String): Flow<fruit?>
 
     suspend fun getfruit(fruitId: String, forceUpdate: Boolean = false): fruit?
 

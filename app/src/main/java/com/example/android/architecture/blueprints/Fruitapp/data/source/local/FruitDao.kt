@@ -35,6 +35,18 @@ interface fruitDao {
     @Query("SELECT * FROM fruit")
     fun observeAll(): Flow<List<LocalFruit>>
 
+    @Query("SELECT * FROM fruit WHERE categoria ='vegetales'")
+    fun observeAllVeg(): Flow<List<LocalFruit>>
+
+    @Query("SELECT * FROM fruit WHERE categoria ='A'")
+    fun observeAllA(): Flow<List<LocalFruit>>
+
+    @Query("SELECT * FROM fruit WHERE categoria ='B'")
+    fun observeAllB(): Flow<List<LocalFruit>>
+
+    @Query("SELECT * FROM fruit WHERE categoria ='C'")
+    fun observeAllC(): Flow<List<LocalFruit>>
+
     /**
      * Observes a single fruit.
      *
@@ -44,6 +56,12 @@ interface fruitDao {
     @Query("SELECT * FROM fruit WHERE id = :fruitId")
     fun observeById(fruitId: String): Flow<LocalFruit>
 
+
+
+    @Query("SELECT * FROM fruit WHERE categoria = :fruitCat")
+    fun getAllVeget(fruitCat: String): Flow<LocalFruit>
+
+
     /**
      * Select all fruits from the fruits table.
      *
@@ -51,6 +69,7 @@ interface fruitDao {
      */
     @Query("SELECT * FROM fruit")
     suspend fun getAll(): List<LocalFruit>
+
 
     /**
      * Select a fruit by id.

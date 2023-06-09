@@ -95,9 +95,47 @@ class DefaultfruitRepository @Inject constructor(
         }
     }
 
+
+    override fun getfruitsVegetales(): Flow<List<fruit>> {
+        return localDataSource.observeAllVeg().map { fruits ->
+            withContext(dispatcher) {
+                fruits.toExternal()
+            }
+        }
+    }
+
+    override fun getfruitsA(): Flow<List<fruit>> {
+        return localDataSource.observeAllA().map { fruits ->
+            withContext(dispatcher) {
+                fruits.toExternal()
+            }
+        }
+    }
+
+    override fun getfruitsB(): Flow<List<fruit>> {
+        return localDataSource.observeAllB().map { fruits ->
+            withContext(dispatcher) {
+                fruits.toExternal()
+            }
+        }
+    }
+
+    override fun getfruitsC(): Flow<List<fruit>> {
+        return localDataSource.observeAllC().map { fruits ->
+            withContext(dispatcher) {
+                fruits.toExternal()
+            }
+        }
+    }
+
     override suspend fun refreshfruit(fruitId: String) {
         refresh()
     }
+
+    override fun getfruitsVeget(fruitCat: String): Flow<fruit?> {
+        return localDataSource.getAllVeget(fruitCat).map { it.toExternal() }
+    }
+
 
     override fun getfruitStream(fruitId: String): Flow<fruit?> {
         return localDataSource.observeById(fruitId).map { it.toExternal() }

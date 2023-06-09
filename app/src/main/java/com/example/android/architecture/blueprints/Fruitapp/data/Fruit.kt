@@ -38,6 +38,9 @@ data class fruit(
     val titleForList: String
         get() = if (title.isNotEmpty()) title else description
 
+    val categoriaForList: String
+        get() = if (categoria.isNotEmpty()) categoria else description
+
     val isActive
         get() = !isCompleted
 

@@ -157,7 +157,7 @@ private fun AddEditfruitContent(
                 onValueChange = onCategoChanged,
                 placeholder = {
                     Text(
-                        text = stringResource(id = R.string.title_hint),
+                        text = stringResource(id = R.string.title_hint1),
                         style = MaterialTheme.typography.h6
                     )
                 },

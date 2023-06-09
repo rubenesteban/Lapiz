@@ -66,9 +66,26 @@ class FakefruitRepository : fruitRepository {
 
     override fun getfruitsStream(): Flow<List<fruit>> = observablefruits
 
+    override fun getfruitsVegetales(): Flow<List<fruit>> = observablefruits
+
+
+
+    override fun getfruitsA(): Flow<List<fruit>> = observablefruits
+    override fun getfruitsB(): Flow<List<fruit>> = observablefruits
+
+    override fun getfruitsC(): Flow<List<fruit>> = observablefruits
+
     override fun getfruitStream(fruitId: String): Flow<fruit?> {
         return observablefruits.map { fruits ->
             return@map fruits.firstOrNull { it.id == fruitId }
+        }
+    }
+
+
+
+    override fun getfruitsVeget(fruitCat: String): Flow<fruit?> {
+        return observablefruits.map { fruits ->
+            return@map fruits.firstOrNull { it.id == fruitCat }
         }
     }
 
